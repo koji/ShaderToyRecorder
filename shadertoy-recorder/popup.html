@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shader Recorder</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      min-width: 9.375rem;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin: 0.25rem 0;
+      border-radius: 0.25rem;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Record Shader</h3>
+  <button id="start">🎥 Start</button>
+  <button id="stop" disabled>🛑 Stop</button>
+  <p id="duration">Duration: 00:00</p>
+  <script src="popup.js"></script>
+</body>
+
+</html>

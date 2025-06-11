@@ -1,0 +1,27 @@
+{
+  "name": "ShaderToy Canvas Recorder",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Capture and record ShaderToy canvas",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "desktopCapture"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.shadertoy.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "*://www.shadertoy.com/"
+  ]
+}
