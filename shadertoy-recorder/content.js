@@ -70,8 +70,8 @@ function startRecording() {
     }
   };
 
-  // Request data every second
-  mediaRecorder.start(1000);
+  // Request data every 100ms for smoother recording
+  mediaRecorder.start(100);
   console.log("Recording started...");
 }
 
