@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "A Chrome extension that allows you to capture and record the canvas from ShaderToy shaders. This tool is perfect for content creators, educators, and anyone who wants to save or share their favorite ShaderToy creations.",
+  "main": "content.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && cp src/popup.html dist/popup.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koji/ShaderToyRecorder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koji/ShaderToyRecorder/issues"
+  },
+  "homepage": "https://github.com/koji/ShaderToyRecorder#readme",
+  "devDependencies": {
+    "@types/chrome": "^0.0.326",
+    "typescript": "^5.8.3"
+  }
+}

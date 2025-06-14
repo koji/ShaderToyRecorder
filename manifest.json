@@ -9,7 +9,7 @@
     "desktopCapture"
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "dist/popup.html"
   },
   "content_scripts": [
     {
@@ -17,7 +17,7 @@
         "*://www.shadertoy.com/*"
       ],
       "js": [
-        "content.js"
+        "dist/content.js"
       ]
     }
   ],
