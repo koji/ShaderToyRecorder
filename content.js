@@ -13,6 +13,7 @@ function startRecording() {
 
   // Try different MIME types in order of preference
   const mimeTypes = [
+    'video/mp4;codecs=avc1.42E01E', // H.264 High Profile, Level 3.0
     'video/mp4',
     'video/webm;codecs=h264',
     'video/webm;codecs=vp9',
@@ -24,7 +25,7 @@ function startRecording() {
 
   mediaRecorder = new MediaRecorder(stream, {
     mimeType: selectedMimeType,
-    videoBitsPerSecond: 5000000 // 5 Mbps
+    videoBitsPerSecond: 2500000 // 2.5 Mbps
   });
 
   mediaRecorder.ondataavailable = (event) => {
@@ -53,8 +54,8 @@ function startRecording() {
         .replace('T', '_')
         .slice(0, 19);
 
-      // Use .mp4 extension regardless of actual format for better compatibility
-      a.download = `shadertoy-recording_${timestamp}.mp4`;
+      const fileExtension = selectedMimeType.includes('mp4') ? '.mp4' : '.webm';
+      a.download = `shadertoy-recording_${timestamp}${fileExtension}`;
       document.body.appendChild(a);
       a.click();
 
