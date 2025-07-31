@@ -1,0 +1,276 @@
+/* Status Indicator Component Styles */
+
+.status-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Duration Display */
+.status-indicator__duration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #1f2937;
+  color: #f9fafb;
+  border-radius: 6px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+}
+
+.status-indicator__duration-label {
+  font-size: 11px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.status-indicator__duration-value {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Status Icons Container */
+.status-indicator__statuses {
+  display: flex;
+  gap: 12px;
+  justify-content: space-around;
+}
+
+/* Individual Status */
+.status-indicator__status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  cursor: help;
+}
+
+.status-indicator__status:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.status-indicator__status-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.status-indicator__status-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Video Status Specific */
+.status-indicator__status--video .status-indicator__status-label {
+  color: #7c3aed;
+}
+
+/* Audio Status Specific */
+.status-indicator__status--audio .status-indicator__status-label {
+  color: #059669;
+}
+
+/* Error Messages */
+.status-indicator__error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  color: #dc2626;
+  font-size: 12px;
+}
+
+.status-indicator__error-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.status-indicator__error-text {
+  flex: 1;
+  line-height: 1.3;
+}
+
+/* Recording Pulse Indicator */
+.status-indicator__recording-pulse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #dc2626;
+  color: white;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: recordingBlink 1.5s infinite;
+}
+
+.status-indicator__pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  animation: pulseDot 1.5s infinite;
+}
+
+.status-indicator__pulse-text {
+  text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes recordingBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 300px) {
+  .status-indicator {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .status-indicator__duration-value {
+    font-size: 14px;
+  }
+
+  .status-indicator__status-icon {
+    font-size: 16px;
+  }
+
+  .status-indicator__statuses {
+    gap: 8px;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .status-indicator {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+
+  .status-indicator__duration {
+    background: #111827;
+    color: #f9fafb;
+  }
+
+  .status-indicator__status:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .status-indicator__status-label {
+    color: #9ca3af;
+  }
+
+  .status-indicator__status--video .status-indicator__status-label {
+    color: #a78bfa;
+  }
+
+  .status-indicator__status--audio .status-indicator__status-label {
+    color: #34d399;
+  }
+
+  .status-indicator__error {
+    background: #451a1a;
+    border-color: #7f1d1d;
+    color: #fca5a5;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .status-indicator {
+    border-width: 2px;
+  }
+
+  .status-indicator__duration {
+    border: 2px solid #374151;
+  }
+
+  .status-indicator__error {
+    border-width: 2px;
+  }
+
+  .status-indicator__recording-pulse {
+    border: 2px solid #b91c1c;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .status-indicator__recording-pulse {
+    animation: none;
+  }
+
+  .status-indicator__pulse-dot {
+    animation: none;
+  }
+
+  .status-indicator__status {
+    transition: none;
+  }
+}
+
+/* Tooltip Styles (for browsers that support it) */
+.status-indicator__status[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: #1f2937;
+  color: white;
+  font-size: 11px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: 4px;
+}
+
+.status-indicator__status[title]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #1f2937;
+  z-index: 1000;
+}

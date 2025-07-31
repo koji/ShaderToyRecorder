@@ -1,0 +1,158 @@
+/* Recording Button Component Styles */
+
+.recording-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Idle State */
+.recording-button--idle {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.recording-button--idle:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Recording State */
+.recording-button--recording {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+  animation: recordingPulse 2s infinite;
+}
+
+.recording-button--recording:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Disabled State */
+.recording-button--disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.recording-button--disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button Elements */
+.recording-button__icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.recording-button__text {
+  flex: 1;
+  text-align: center;
+}
+
+.recording-button__spinner {
+  font-size: 14px;
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes recordingPulse {
+  0%,
+  100% {
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3),
+      0 0 20px rgba(239, 68, 68, 0.5);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Focus States */
+.recording-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 300px) {
+  .recording-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .recording-button__icon {
+    font-size: 14px;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .recording-button--disabled {
+    background: #4b5563;
+    color: #6b7280;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .recording-button--idle {
+    background: #059669;
+    border: 2px solid #047857;
+  }
+
+  .recording-button--recording {
+    background: #dc2626;
+    border: 2px solid #b91c1c;
+  }
+
+  .recording-button--disabled {
+    background: #6b7280;
+    border: 2px solid #4b5563;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .recording-button {
+    transition: none;
+  }
+
+  .recording-button--recording {
+    animation: none;
+  }
+
+  .recording-button__spinner {
+    animation: none;
+  }
+
+  .recording-button:hover:not(:disabled) {
+    transform: none;
+  }
+}
